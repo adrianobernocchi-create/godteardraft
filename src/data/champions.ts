@@ -1,0 +1,480 @@
+import { Champion } from '../types';
+
+export const CHAMPIONS_DATA: Champion[] = [
+  // ==================== GUARDIANS (7) ====================
+  // Focus: Difesa stendardi, protezione alleati, punti bonus fase di scontro
+  {
+    id: 'finvarr',
+    nome: 'Finvarr',
+    ruolo: 'Guardian',
+    tier: 'A',
+    sintesi: 'Leader elfico nobile ed elusivo, maestro nel riposizionamento tattico, teletrasporto alleati e manipolazione dello stendardo.',
+    forteContro: 'Campioni lenti e formazioni fisse (Titus, Halftusk) che non riescono a contestare i suoi teletrasporti di stendardo.',
+    deboleContro: 'Campioni con estrema mobilità o blocco del posizionamento (Durthax con Branch Ward, Raith\'Marid, Kailinn).',
+    sinergie: 'Campioni di controllo come Shayle o Shaper capaci di creare muri protettivi attorno allo stendardo appena teletrasportato.',
+    noteTattiche: 'Usa "Mirage" per far saltare i Shadow Sentinels oltre le linee nemiche e "Shadow Shift" per piantare e proteggere stendardi in posizioni altrimenti irraggiungibili. Top tier nei formati a controllo di zona (Knowledge, Quest).',
+    statoVerifica: 'Verificato',
+    seguaci: 'Shadow Sentinels',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=finvarr&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/finvarr'
+  },
+  {
+    id: 'halftusk',
+    nome: 'Halftusk',
+    ruolo: 'Guardian',
+    tier: 'B',
+    sintesi: 'Capotribù troll imponente e quasi indistruttibile; si rigenera continuamente e richiama i suoi Frogloks per bloccare le cariche.',
+    forteContro: 'Attaccanti a danno moderato o frammentato che non riescono a superare la sua soglia di rigenerazione.',
+    deboleContro: 'Slayer ad altissimo burst damage a colpo singolo (Rangosh con Jawbreaker, Skullbreaker) che possono abbatterlo prima che si curi.',
+    sinergie: 'Ottimo con Shaper che rallentano il campo (Rattlebone, Nia), permettendo a Halftusk di avanzare indisturbato al centro esagoni.',
+    noteTattiche: 'I Frogloks hanno un costo di reclutamento bassissimo e possono essere posizionati per bloccare i corridoi di carica avversari. In fase di scontro, mantieni Halftusk a guardia dello stendardo per sfruttare la sua armatura naturale e il contrattacco.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Frogloks',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=halftusk&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/halftusk'
+  },
+  {
+    id: 'helena',
+    nome: 'Helena',
+    ruolo: 'Guardian',
+    tier: 'D',
+    sintesi: 'Sacerdotessa devota specializzata nella manipolazione dei tiri di dado e nella creazione di una zona santuario attorno allo stendardo.',
+    forteContro: 'Scenari basati su un singolo esagono centrale da tenere ad ogni costo (scenario Quest) e formazioni dipendenti da tiri perfetti.',
+    deboleContro: 'Slayer ad alta precisione e gittata (Lorsann, Maxen) e Maelstrom capaci di incenerire rapidamente le sacerdotesse Rylont Tribe.',
+    sinergie: 'Necessita di campioni con forte presenza offensiva (Rangosh, Kailinn) che possano proteggerla mentre lei concentra i suoi poteri di supporto sui dadi.',
+    noteTattiche: 'Secondo Objective Hex è una campionessa situazionale ad alta varianza: molto vulnerabile se isolata, ma capace di bloccare un turno intero con "Pennant of Grace" se ben posizionata con le sue Rylont Tribe.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Rylont Tribe',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=helena&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/helena'
+  },
+  {
+    id: 'jaak',
+    nome: 'Jaak',
+    ruolo: 'Guardian',
+    tier: 'S',
+    sintesi: 'Alchimista goblin eccelso; l\'unico Guardian in grado di curare campioni alleati esterni alla propria banda, con proiezione stendardo universale.',
+    forteContro: 'Guerra di logoramento e campioni lenti; punisce formazioni raggruppate grazie agli intrugli velenosi dei Cauldron Crones.',
+    deboleContro: 'Cariche esplosive dirette da Slayer veloci che bypassano i Crones per concentrarsi sul corpo fragile di Jaak prima della cura.',
+    sinergie: 'Sinergia micidiale con Slayer di prima linea (Rangosh, Skullbreaker) che possono combattere in modo iper-aggressivo sapendo di essere curati da Jaak.',
+    noteTattiche: 'Classificato al 5° posto assoluto nei power rankings di Objective Hex. Con "Spider Stick" e la mobilità dei Cauldron Crones controlla sia la fase di preparazione che lo scontro, garantendo cure decisive e rivendicazioni di stendardo a lungo raggio.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Cauldron Crones',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=jaak&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/jaak'
+  },
+  {
+    id: 'mourneblade',
+    nome: 'Mourneblade',
+    ruolo: 'Guardian',
+    tier: 'B',
+    sintesi: 'Cavaliere spettrale che cresce esponenzialmente di potere man mano che cadono modelli sul terreno, culminando in un letale Soul Cleave.',
+    forteContro: 'Partite prolungate e compagini basate su sciami di seguaci deboli (Blackjaw, Rattlebone, Grimgut), che alimentano il suo serbatoio di anime.',
+    deboleContro: 'Partite rapide e Slayer che ignorano i Knightshades per decapitare Mourneblade nei primi turni prima del suo potenziamento.',
+    sinergie: 'Funziona benissimo con Maelstrom che eliminano costantemente seguaci nemici, velocizzando la raccolta di anime per i suoi attacchi devastanti.',
+    noteTattiche: 'I Knightshades possono essere sacrificati e riposizionati. Non forzare lo scontro al turno 1; aspetta che il campo sia saturo di caduti per scatenare "Grave Whispers" e "Soul Cleave" sulla contesa degli stendardi.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Knightshades',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=mournblade&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/mourneblade'
+  },
+  {
+    id: 'rhodri',
+    nome: 'Rhodri',
+    ruolo: 'Guardian',
+    tier: 'A',
+    sintesi: 'La fortezza nanica vivente; dotato dell\'armatura più impenetrabile del gioco e di un\'aura che rende i suoi stendardi inamovibili.',
+    forteContro: 'Attaccanti con dadi danno mediocri o basati su attacchi multipli leggeri (Sneaky Peet, Kailinn senza potenziamenti, seguaci generici).',
+    deboleContro: 'Effetti di autowound e perforazione pura (Lorsann con Piercing Shot, Maxen) e spostamenti forzati che lo allontanano dallo stendardo.',
+    sinergie: 'Perfetto in combinazione con Shaper che piantano lo stendardo per lui (Nia, Lily) prima che Rhodri e gli Household Guard formino la falange.',
+    noteTattiche: 'Con "Shield Wall" e "Hold the Line", Rhodri raggiunge valori difensivi insuperabili. È praticamente immune alla maggior parte degli attacchi convenzionali; costringe l\'avversario a ignorarlo o a sprecare turni interi.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Household Guard',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=rhodri&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/rhodri'
+  },
+  {
+    id: 'durthax',
+    nome: 'Durthax',
+    ruolo: 'Guardian',
+    tier: 'B',
+    sintesi: 'Signore del bosco titanico con 14 punti ferita (il più alto del gioco); i suoi Treekin bloccano piazzamenti e teletrasporti nemici.',
+    forteContro: 'Campioni basati su trucchi di posizionamento adiacente o teletrasporto (Raith\'Marid con Kersplash, Finvarr con Mirage).',
+    deboleContro: 'Slayer mobili che possono colpirlo ripetutamente sfruttando la sua difesa ridotta (2/1) e il movimento nullo in plot phase.',
+    sinergie: 'Sinergia eccellente con eroi che spostano o velocizzano gli alleati (Fenra con movimenti out-of-activation, Lily con sentieri naturali).',
+    noteTattiche: 'Il tratto "Branch Ward" dei Treekin è un game-changer competitivo: impedisce che nemici o seguaci vengano reclutati o piazzati in esagoni adiacenti. Con "Growth Spurt" spinge via gli avversari proteggendo le bandiere.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Treekin',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=durthax&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/durthax'
+  },
+
+  // ==================== MAELSTROMS (7) ====================
+  // Focus: Caccia ai seguaci nemici, controllo sciami, punti bonus fase di scontro
+  {
+    id: 'blackjaw',
+    nome: 'Blackjaw',
+    ruolo: 'Maelstrom',
+    tier: 'B',
+    sintesi: 'Tiranno orco pirocinetico specializzato nell\'incenerire interi gruppi di seguaci a bassa armatura con raffiche di fuoco ad area.',
+    forteContro: 'Bande con sciami di seguaci fragili (Rylont Tribe di Helena, Hexlings di Rattlebone, Mistwood Rangers di Lorsann).',
+    deboleContro: 'Altri Maelstrom più veloci o resistenti (Kailinn, Fenra, Jeen) che massacrano i suoi Unburnt Reavers prima che facciano punti.',
+    sinergie: 'Ottimo con campioni che radunano o immobilizzano i seguaci nemici (Shayle con Landslide, Rattlebone) per massimizzare il soffio.',
+    noteTattiche: 'Blackjaw ottiene la maggior parte dei punti scalando la battle ladder tramite l\'annientamento dei seguaci nemici con "Fire Breath". Non ingaggiare i campioni nemici direttamente; concentrati sulla pulizia delle pedine.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Unburnt Reavers',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=blackjaw&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/blackjaw'
+  },
+  {
+    id: 'fenra',
+    nome: 'Fenra',
+    ruolo: 'Maelstrom',
+    tier: 'A',
+    sintesi: 'Lupa apocalittica dotata del valore di Schivata (Dodge) più alto del gioco; maestra nei movimenti fuori attivazione di modelli alleati.',
+    forteContro: 'Attaccanti privi di precisione elevata e seguaci isolati; distrugge le formazioni di Blackjaw e Rattlebone in pochi balzi.',
+    deboleContro: 'Attacchi ad alta precisione che ignorano la schivata o effetti ad area (Morrigan, Luella con archi di fulmine).',
+    sinergie: 'Straordinaria con campioni lenti ma potenti (Durthax, Rhodri, Skullbreaker), che beneficiano enormemente dei suoi movimenti fuori turno.',
+    noteTattiche: 'I Chainless Curs forniscono attacchi coordinati e riposizionamenti gratuiti. In fase di scontro Fenra diventa fulminea e letale; sfrutta la sua schivata estrema per operare dietro le linee nemiche senza temere ritorsioni.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Chainless Curs',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=fenra&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/fenra'
+  },
+  {
+    id: 'grimgut',
+    nome: 'Grimgut',
+    ruolo: 'Maelstrom',
+    tier: 'C',
+    sintesi: 'Colosso viscido e famelico che vomita continuamente Retchlings per bloccare esagoni, divorandoli poi per curarsi e attaccare.',
+    forteContro: 'Campioni con pochi attacchi o senza capacità di farsi strada tra formazioni fitte di carne da cannone.',
+    deboleContro: 'Maelstrom e Slayer travolgenti (Kailinn, Skullbreaker, Rangosh) che calpestano i Retchlings e picchiano direttamente Grimgut.',
+    sinergie: 'Buona intesa con campioni di controllo del terreno (Lily, Shayle) per trasformare il campo in una palude impraticabile.',
+    noteTattiche: 'Grimgut controlla il flusso del movimento avversario creando blocchi fisici con i Retchlings. Fai attenzione contro Maelstrom nemici dotati di attacchi multi-modello, che useranno i tuoi Retchlings come banca punti.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Retchlings',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=grimgut&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/grimgut'
+  },
+  {
+    id: 'jeen',
+    nome: 'Jeen',
+    ruolo: 'Maelstrom',
+    tier: 'B',
+    sintesi: 'Capitano goblin a bordo di una macchina da guerra a ruote; guerriera iper-mobile specializzata nel morso e fuggi e nel decostruire bande leggere.',
+    forteContro: 'Seguaci sparsi e campioni con basso movimento (Halftusk, Titus) che non riescono a inchiodarla.',
+    deboleContro: 'Campioni corazzati impenetrabili (Rhodri) o Slayer con aggancio letale a lunga gittata (Lorsann, Maxen).',
+    sinergie: 'Sinergizza bene con Jaak o Sneaky Peet per creare un fronte goblin coordinato e imprevedibile in fase di preparazione.',
+    noteTattiche: 'I Golden Scuttleclaw combinano velocità e molestie a medio raggio. Usa "Scuttle" e "Hit and Run" per eliminare 2-3 seguaci a turno senza mai rimanere a portata di contrattacco nemico.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Golden Scuttleclaw',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=jeen&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/jeen'
+  },
+  {
+    id: 'kailinn',
+    nome: 'Kailinn',
+    ruolo: 'Maelstrom',
+    tier: 'S',
+    sintesi: 'Centauro da guerra inarrestabile; considerata tra i campioni più forti e dominanti dell\'intero gioco per velocità, impatto e pulizia seguaci.',
+    forteContro: 'Praticamente qualsiasi formazione basata su seguaci (Blackjaw, Landslide, Young Dragons, Retchlings) e campioni leggeri.',
+    deboleContro: 'Soltanto campioni con armatura altissima come Rhodri riescono ad attutire i suoi colpi senza cedere immediatamente il passo.',
+    sinergie: 'Letale in qualunque composizione competitiva; ottima con Shaper che aprono varchi (Raith\'Marid) o Slayer che finiscono i superstiti.',
+    noteTattiche: 'Posizionata al 2° posto assoluto nei power rankings di Objective Hex. La sua capacità di muoversi attraverso i modelli nemici infliggendo danni durante il transito e l\'ultimate a punti fissi la rendono un pick da primo giro obbligato.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Virtues',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=kailinn&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/kailinn'
+  },
+  {
+    id: 'luella',
+    nome: 'Luella',
+    ruolo: 'Maelstrom',
+    tier: 'A',
+    sintesi: 'Furia guerriera della tempesta; canalizza fulmini a catena tra sé e le sue Shieldmaidens per colpire nemici ad alta schivata.',
+    forteContro: 'Campioni basati su alta schivata e bassa armatura come Sneaky Peet (che countera totalmente), Fenra e seguaci sparsi.',
+    deboleContro: 'Baluardi iper-corazzati (Rhodri, Durthax) e Slayer a lungo raggio che abbattono le sue Shieldmaidens prima del circuito.',
+    sinergie: 'Eccezionale con Guardian che mantengono la linea centrale; le Shieldmaidens offrono coperture e fungono da conduttori elettrici.',
+    noteTattiche: 'Posizionata all\'8° posto assoluto da Objective Hex. Con "Shield Slam" e archi voltaici annienta le difese basate sulla schivata; eccelle nel punire gli assassini che tentano di aggirare lo stendardo.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Shieldmaidens',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=luella&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/luella'
+  },
+  {
+    id: 'titus',
+    nome: 'Titus',
+    ruolo: 'Maelstrom',
+    tier: 'B',
+    sintesi: 'Generale gladiatore carismatico; guida i Glory Seekers in serrata formazione a falange con un mix equilibrato di danno a seguaci e campioni.',
+    forteContro: 'Campioni con seguaci resistenti o campioni a medio profilo difensivo che tentano il corpo a corpo (Nia, Halftusk, Mourneblade).',
+    deboleContro: 'Slayer da scontro devastante (Rangosh, Skullbreaker, Keera) che sfruttano la sua scarsa agilità e resilienza moderata per abbatterlo.',
+    sinergie: 'Beneficia enormemente di campioni con aure difensive o curatori (Jaak, Finvarr) per mantenere vivi i suoi Glory Seekers.',
+    noteTattiche: 'I Glory Seekers acquisiscono bonus esponenziali quando attaccano bersagli ingaggiati anche da Titus. Gioca attorno al fulcro centrale per contestare contemporaneamente gli stendardi e mietere punti con la falange.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Glory Seekers',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=titus&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/titus'
+  },
+
+  // ==================== SHAPERS (6) ====================
+  // Focus: Manipolazione terreno, dadi iniziativa, fase di preparazione, stendardi precoci
+  {
+    id: 'lily',
+    nome: 'Lily',
+    ruolo: 'Shaper',
+    tier: 'A',
+    sintesi: 'Incantatrice silvana regina dell\'interdizione d\'area; semina radici e barriere floreali per bloccare cariche e proteggere alleati.',
+    forteContro: 'Campioni da corpo a corpo diretti basati su cariche lineari (Skullbreaker, Titus, Rangosh) che rimangono intrappolati dai rampicanti.',
+    deboleContro: 'Campioni a lunga gittata (Lorsann, Maxen) e Maelstrom ad area (Blackjaw) che distruggono i Thornlings a distanza di sicurezza.',
+    sinergie: 'Splendida con Guardian coriacei come Rhodri: crea perimetri impraticabili lasciando un unico varco difeso dal nano.',
+    noteTattiche: 'Posizionata al 10° posto assoluto da Objective Hex. I Thornlings possono radicare sul posto i campioni avversari; il suo posizionamento rapido dello stendardo in fase di preparazione impone il ritmo della partita.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Thornlings',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=lily&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/lily'
+  },
+  {
+    id: 'nia',
+    nome: 'Nia',
+    ruolo: 'Shaper',
+    tier: 'C',
+    sintesi: 'Geomante dei cristalli; altera i valori dei dadi e accelera la fortificazione degli stendardi grazie ai Quartzlings.',
+    forteContro: 'Partite statiche e scenari a controllo puro (Life, Knowledge) dove il posizionamento iniziale decide la vittoria.',
+    deboleContro: 'Campioni ad alto spostamento forzato o aggancio rapido (Raith\'Marid, Styx, Kailinn) che la sradicano e decimano i Quartzlings.',
+    sinergie: 'Eccellente con campioni difensivi statici che beneficiano dei suoi buff ai dadi e della protezione stendardi.',
+    noteTattiche: 'Nia brilla nel round iniziale garantendo punti immediati di posizionamento. Tuttavia, contro Shaper aggressivi come Raith\'Marid fatica enormemente a fuggire una volta ingaggiata nel corpo a corpo.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Quartzlings',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=nia&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/nia'
+  },
+  {
+    id: 'raith-marid',
+    nome: 'Raith\'Marid',
+    ruolo: 'Shaper',
+    tier: 'S',
+    sintesi: 'Il dio indiscusso del controllo mappa; elementale marino con idro-mobilità totale, geyser repulsivi e capacità di spaccare formazioni.',
+    forteContro: 'Praticamente l\'intero roster di Godtear; countera duramente Shayle (separandolo dal golem Landslide) e Nia (travolgendola).',
+    deboleContro: 'Solo il tratto Branch Ward dei Treekin di Durthax può limitare i suoi atterraggi con Kersplash.',
+    sinergie: 'Sinergia universale di grado S: apre varchi per qualsiasi Slayer e isola i campioni nemici lontano dai loro seguaci e stendardi.',
+    noteTattiche: 'Al 1° posto assoluto incontrastato nei power rankings di Objective Hex. Con "Undercurrent", "Ker\'Splash" e il suo leggendario Tsunami, Raith\'Marid può muoversi ovunque, spingere i modelli chiave di 4+ esagoni e ribaltare la partita.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Splashlings',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=raithmarid&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/raith'
+  },
+  {
+    id: 'rattlebone',
+    nome: 'Rattlebone',
+    ruolo: 'Shaper',
+    tier: 'D',
+    sintesi: 'Sciamana non-morta profetica; manipola l\'ordine di turno e infligge debilitanti maledizioni (Blight) ai campioni nemici.',
+    forteContro: 'Composizioni avversarie che fanno affidamento assoluto sull\'iniziativa al millimetro e campioni senza rimozione maledizioni.',
+    deboleContro: 'Maelstrom veloci (Blackjaw, Kailinn, Fenra) che fanno strage immediata dei fragilissimi Hexlings.',
+    sinergie: 'Sinergizza con Morrigan e campioni che infliggono danni addizionali contro bersagli debilitati da Blight.',
+    noteTattiche: 'Richiede molta preparazione e pianificazione anticipata per funzionare. Gli Hexlings sono tra i modelli più facili da abbattere nel gioco; se il nemico schiera un buon Maelstrom, Rattlebone rischia di diventare una passività punti.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Hexlings',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=rattlebone&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/rattlebone'
+  },
+  {
+    id: 'shayle',
+    nome: 'Shayle',
+    ruolo: 'Shaper',
+    tier: 'A',
+    sintesi: 'Maestro delle rune glaciali affiancato da Landslide, un imponente golem mono-modello che lancia massi e occlude gli esagoni chiave.',
+    forteContro: 'Campioni con gittata corta e dipendenti da linee di vista sgombre; Landslide blocca totalmente corridoi di avanzamento.',
+    deboleContro: 'Effetti di separazione forzata: Raith\'Marid è il suo peggior incubo perché scaraventa Landslide lontano da Shayle impedendone il controllo.',
+    sinergie: 'Formidabile con Slayer da sfondamento (Rangosh, Skullbreaker); il masso di Landslide ammorbidisce i bersagli mentre Shayle protegge la retroguardia.',
+    noteTattiche: '6° assoluto nei power rankings di Objective Hex. Landslide non conta come uno sciame ma come un singolo colosso resistente; "Boulder Toss" e "Avalanche" permettono a Shayle di dominare la fase di preparazione e stendere bandiere sicure.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Landslide',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=shayle&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/shayle'
+  },
+  {
+    id: 'styx',
+    nome: 'Styx',
+    ruolo: 'Shaper',
+    tier: 'A',
+    sintesi: 'Traghettatore spettrale delle anime; avvolge la mappa nella nebbia, costringe i nemici al riposizionamento forzato e miete punti a sorpresa.',
+    forteContro: 'Campioni statici come Nia e compagini che tentano di nascondersi dietro linee difensive; gli Abyssal Hounds agganciano con "Drag".',
+    deboleContro: 'Slayer aggressivi con elevata resistenza al logoramento (Skullbreaker, Rangosh) che lo raggiungono attraverso la nebbia.',
+    sinergie: 'Magnifico con Mourneblade (condividono la tematica delle anime e la sinergia sui caduti) e con Slayer ad alto danno singolo.',
+    noteTattiche: 'Posizionato al 7° posto assoluto da Objective Hex. Con "Shadow Walk" e la pressione costante dei segugi abissali, Styx è uno dei migliori Shaper per contestare la neutralizzazione degli stendardi nemici a fine round.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Abyssal Hounds',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=styx&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/styx'
+  },
+
+  // ==================== SLAYERS (7) ====================
+  // Focus: Eliminazione Campioni nemici, colpi critici ad alto impatto, punti bonus fase di scontro
+  {
+    id: 'keera',
+    nome: 'Keera',
+    ruolo: 'Slayer',
+    tier: 'C',
+    sintesi: 'Principessa dei draghi; proietta minacce a lungo raggio canalizzando attacchi letali attraverso i suoi due cuccioli alati Young Dragons.',
+    forteContro: 'Campioni fragili con bassa armatura (Armor 1-2 come Fenra, Titus, Sneaky Peet) che non reggono i doppi soffi di drago.',
+    deboleContro: 'Campioni con alta armatura (Rhodri) e Slayer ad alto danno diretto che puntano direttamente al corpo non protetto di Keera.',
+    sinergie: 'Necessita di campioni che offrano supporto difensivo o cure (Jaak, Finvarr) per mantenere operativi i draghi sui due fianchi.',
+    noteTattiche: 'I Young Dragons devono restare entro 3 esagoni da Keera per attaccare, richiedendo un attento micro-posizionamento. Ha un raggio di minaccia esteso, ma una volta ingaggiata da vicino soffre la mancanza di armature pesanti.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Young Dragons',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=keera&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/keera'
+  },
+  {
+    id: 'lorsann',
+    nome: 'Lorsann',
+    ruolo: 'Slayer',
+    tier: 'C',
+    sintesi: 'Cecchina elfica a raggio 3; specializzata nel colpire dalle retrovie e rifinire campioni feriti con autowound inesorabili (Piercing Shot).',
+    forteContro: 'Campioni feriti o colossi lenti privi di ripari (Skullbreaker da lontano, Titus) e stendardi difesi debolmente.',
+    deboleContro: 'Combattenti corpo a corpo ad alta precisione come Morrigan, che resiste alle sue frecce e la decapita una volta raggiunta in mischia.',
+    sinergie: 'Ideale accanto a Slayer o Maelstrom da prima linea (Rangosh, Kailinn) che portano i campioni nemici sotto la soglia di salute per il suo Deathblow.',
+    noteTattiche: 'Non aspettarti raffiche ad alto volume di dadi danno: la forza di Lorsann risiede nell\'infliggere ferite certe automatiche (autowound) a distanza di sicurezza con i Mistwood Rangers a fare da schermo.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Mistwood Rangers',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=lorsann&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/lorsann'
+  },
+  {
+    id: 'maxen',
+    nome: 'Maxen',
+    ruolo: 'Slayer',
+    tier: 'B',
+    sintesi: 'Genio balistico con balestra pesante meccanizzata; perfora armature pesanti piazzando dardi traccianti con i suoi Brass Goblins.',
+    forteContro: 'Campioni corazzati che si sentono al sicuro (Rhodri, Halftusk) grazie ai dardi perforanti ad alta penetrazione.',
+    deboleContro: 'Assassini ad alta velocità e aggiramento (Kailinn, Sneaky Peet) che lo travolgono prima che ricarichi il meccanismo balistico.',
+    sinergie: 'Formidabile con Shaper che tengono i nemici a debita distanza (Lily con radici, Shayle con Landslide).',
+    noteTattiche: '12° assoluto nei power rankings di Objective Hex. I Brass Goblins non servono per uccidere ma per marcare i bersagli e concedere bonus di precisione e danno a Maxen per tiri micidiali a gittata 3.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Brass Goblins',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=maxen&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/maxen'
+  },
+  {
+    id: 'morrigan',
+    nome: 'Morrigan',
+    ruolo: 'Slayer',
+    tier: 'D',
+    sintesi: 'Regina del gelo alata; vanta solida armatura e precisione, letale nel cacciare campioni a bassa armatura ma vincolata al mini-gioco boons/blights.',
+    forteContro: 'Campioni con alta schivata ma armatura esigua come Lorsann e Sneaky Peet, che abbatte con precisione superiore.',
+    deboleContro: 'Baluardi corazzati impenetrabili e liste veloci che non le danno il tempo di accumulare i boon necessari.',
+    sinergie: 'Ha un disperato bisogno di compagni che le forniscano boons di attacco e protezione dall\'esterno (Jaak, Rattlebone) per performare al meglio.',
+    noteTattiche: 'Analizzata approfonditamente su Objective Hex: nonostante l\'elevata precisione e i Coldblood Claws, la sua dipendenza da setup e condizioni la colloca in fondo alle classifiche competitive a meno di composizioni costruite su misura.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Coldblood Claws',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=morrigan&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/morrigan'
+  },
+  {
+    id: 'rangosh',
+    nome: 'Rangosh',
+    ruolo: 'Slayer',
+    tier: 'S',
+    sintesi: 'Berserker famigerato; infligge il potenziale di danno singolo più violento del gioco; cresce di ferocia a ogni modello abbattuto con Jawbreaker.',
+    forteContro: 'Qualsiasi Campione nemico: una volta agganciato in fase di scontro, Rangosh può abbattere anche bersagli a piena salute in una sola attivazione.',
+    deboleContro: 'Effetti pesanti di controllo movimento, rallentamenti e maledizioni (Blight) che ne ritardano l\'ingaggio mortale.',
+    sinergie: 'Terrore puro se affiancato da Jaak (che lo cura mentre lui si autolesiona per aumentare i danni) o da Shaper che gli spianano la strada.',
+    noteTattiche: '3° assoluto nei power rankings di Objective Hex. Con "Whiplash", i Redbandit Javelineers e la sua leggendaria mossa "Jawbreaker", Rangosh domina le partite imponendo una kill threat zone che costringe l\'avversario a giocare col terrore.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Redbandit Javelineers',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=rangosh&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/rangosh'
+  },
+  {
+    id: 'skullbreaker',
+    nome: 'Skullbreaker',
+    ruolo: 'Slayer',
+    tier: 'S',
+    sintesi: 'Orco titanico con maglio da guerra; frantuma armature e demolisce stendardi e campioni con colpi da KO immediato.',
+    forteContro: 'Campioni da prima linea che tentano di reggere lo scontro corpo a corpo (Titus, Halftusk, Durthax).',
+    deboleContro: 'Attacchi a lungo raggio che lo consumano da lontano (Lorsann, Maxen) e sciami che gli fanno sprecare colpi preziosi (Knightshades di Mourneblade).',
+    sinergie: 'Sinergizza ottimamente con Shaper che rallentano o bloccano i nemici (Lily, Shayle) permettendo a Skullbreaker di camminare verso la preda.',
+    noteTattiche: '4° assoluto nei power rankings di Objective Hex. Con i Tooth Tooth Brutes che inchiodano i nemici, Skullbreaker scaglia attacchi capaci di cancellare armature e distruggere gli stendardi avversari in fase di scontro con facilità impressionante.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Tooth Tooth Brutes',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=skullbreaker&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/skullbreaker'
+  },
+  {
+    id: 'sneaky-peet',
+    nome: 'Sneaky Peet',
+    ruolo: 'Slayer',
+    tier: 'C',
+    sintesi: 'Assassino goblin rapido e opportunista; combina elevata schivata, trucchi di teletrasporto dei seguaci e pugnalate alle spalle su armature leggere.',
+    forteContro: 'Campioni con Armatura 1 o 2 (Fenra, Titus, Skullbreaker, Keera, Lily) che non riescono a colpirlo e soffrono la sua precisione.',
+    deboleContro: 'Campioni con archi elettrici o alta precisione che ignorano la schivata: Luella (suo hard counter assoluto) e Lorsann.',
+    sinergie: 'Ottimo con eroi goblin (Jeen, Jaak) per un\'ondata caotica di movimenti multipli o con campioni che distraggono il fronte principale.',
+    noteTattiche: 'I suoi Sneaky Stabbers usano "Sneak" per saltare attraverso i modelli nemici e "Backstab" per punire chi si distrae. Gioca come un ibrido tra un Guardian da contestazione e un assassino opportunista, evitando tassativamente Luella.',
+    statoVerifica: 'Verificato',
+    seguaci: 'Sneaky Stabs',
+    linkCommunity: 'https://godtear-community.github.io/browser/#champion=sneakypeet&card=champion-trait',
+    linkObjectiveHex: 'https://www.objectivehex.com/blog/search/peet'
+  }
+];
+
+export const STANDARD_SCENARIOS = [
+  { id: 'life', nome: 'Life', descrizione: 'Esagoni obiettivo che rifioriscono e premiano il controllo continuo.' },
+  { id: 'death', nome: 'Death', descrizione: 'Scontri feroci in cui ogni eliminazione sposta i punti influenza.' },
+  { id: 'knowledge', nome: 'Knowledge', descrizione: 'Zone di conoscenza arcana in continua rotazione.' },
+  { id: 'quest', nome: 'Quest', descrizione: 'Obiettivi mobili da scortare o difendere verso il territorio avversario.' },
+  { id: 'change', nome: 'Change', descrizione: 'Mappa dinamica con esagoni di stendardo che mutano posizione.' }
+];
+
+export const ROLE_INFO: Record<Champion['ruolo'], {
+  nome: string;
+  descrizione: string;
+  colorePrimario: string;
+  bgBadge: string;
+  borderBadge: string;
+  textBadge: string;
+  hexCode: string;
+  iconName: string;
+}> = {
+  Guardian: {
+    nome: 'Guardian',
+    descrizione: 'Difensori coriacei eccellenti nel piazzare e proteggere stendardi nella fase di scontro.',
+    colorePrimario: 'blue',
+    bgBadge: 'bg-blue-950/70',
+    borderBadge: 'border-blue-500/40',
+    textBadge: 'text-blue-300',
+    hexCode: '#3b82f6',
+    iconName: 'Shield'
+  },
+  Maelstrom: {
+    nome: 'Maelstrom',
+    descrizione: 'Distruttori ad area che eccellono nell\'eliminare i seguaci avversari per accumulare punti.',
+    colorePrimario: 'amber',
+    bgBadge: 'bg-amber-950/70',
+    borderBadge: 'border-amber-500/40',
+    textBadge: 'text-amber-300',
+    hexCode: '#f59e0b',
+    iconName: 'Flame'
+  },
+  Shaper: {
+    nome: 'Shaper',
+    descrizione: 'Manipolatori del terreno e delle regole, dominano la fase di preparazione e l\'iniziativa.',
+    colorePrimario: 'emerald',
+    bgBadge: 'bg-emerald-950/70',
+    borderBadge: 'border-emerald-500/40',
+    textBadge: 'text-emerald-300',
+    hexCode: '#10b981',
+    iconName: 'Wand2'
+  },
+  Slayer: {
+    nome: 'Slayer',
+    descrizione: 'Cacciatori letali a bersaglio singolo, specializzati nell\'abbattere i Campioni avversari.',
+    colorePrimario: 'rose',
+    bgBadge: 'bg-rose-950/70',
+    borderBadge: 'border-rose-500/40',
+    textBadge: 'text-rose-300',
+    hexCode: '#f43f5e',
+    iconName: 'Swords'
+  }
+};

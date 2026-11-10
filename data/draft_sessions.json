@@ -1,0 +1,105 @@
+{
+  "GT-6ZPN": {
+    "id": "draft_1794317165986",
+    "name": "Draft per Squadre - Custodi della Rovina vs Campioni dell'Ascesa",
+    "createdAt": "2026-11-10T13:26:05.986Z",
+    "updatedAt": "2026-11-10T13:27:06.337Z",
+    "status": "completed",
+    "config": {
+      "mode": "teams",
+      "playerCount": 4,
+      "rosterSize": 3,
+      "order": "snake",
+      "firstTeam": "A",
+      "teamAName": "Custodi della Rovina",
+      "teamBName": "Campioni dell'Ascesa",
+      "players": [],
+      "scenario": "Death"
+    },
+    "turns": [
+      {
+        "turnIndex": 0,
+        "turnNumber": 1,
+        "team": "A",
+        "playerName": "Custodi della Rovina"
+      },
+      {
+        "turnIndex": 1,
+        "turnNumber": 2,
+        "team": "B",
+        "playerName": "Campioni dell'Ascesa"
+      },
+      {
+        "turnIndex": 2,
+        "turnNumber": 3,
+        "team": "B",
+        "playerName": "Campioni dell'Ascesa"
+      },
+      {
+        "turnIndex": 3,
+        "turnNumber": 4,
+        "team": "A",
+        "playerName": "Custodi della Rovina"
+      },
+      {
+        "turnIndex": 4,
+        "turnNumber": 5,
+        "team": "A",
+        "playerName": "Custodi della Rovina"
+      },
+      {
+        "turnIndex": 5,
+        "turnNumber": 6,
+        "team": "B",
+        "playerName": "Campioni dell'Ascesa"
+      }
+    ],
+    "currentTurnIndex": 6,
+    "picks": [
+      {
+        "turnIndex": 0,
+        "championId": "finvarr",
+        "team": "A",
+        "playerName": "Custodi della Rovina",
+        "timestamp": 1794317192984
+      },
+      {
+        "turnIndex": 1,
+        "championId": "halftusk",
+        "team": "B",
+        "playerName": "Campioni dell'Ascesa",
+        "timestamp": 1794317200518
+      },
+      {
+        "turnIndex": 2,
+        "championId": "helena",
+        "team": "B",
+        "playerName": "Campioni dell'Ascesa",
+        "timestamp": 1794317207119
+      },
+      {
+        "turnIndex": 3,
+        "championId": "jaak",
+        "team": "A",
+        "playerName": "Custodi della Rovina",
+        "timestamp": 1794317213866
+      },
+      {
+        "turnIndex": 4,
+        "championId": "mourneblade",
+        "team": "A",
+        "playerName": "Custodi della Rovina",
+        "timestamp": 1794317219349
+      },
+      {
+        "turnIndex": 5,
+        "championId": "rhodri",
+        "team": "B",
+        "playerName": "Campioni dell'Ascesa",
+        "timestamp": 1794317226331
+      }
+    ],
+    "isOnline": true,
+    "roomCode": "GT-6ZPN"
+  }
+}

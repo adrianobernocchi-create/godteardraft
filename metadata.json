@@ -1,0 +1,6 @@
+{
+  "name": "Godtear Draft Assistant",
+  "description": "Applicazione per organizzare e guidare il draft dei Champion del gioco da tavolo Godtear, con modalità individuale e a squadre, archivio consultabile e salvataggio sessioni.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
